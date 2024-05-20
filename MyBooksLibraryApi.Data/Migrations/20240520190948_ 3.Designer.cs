@@ -11,8 +11,8 @@ using MyBooksLibraryApi.Data;
 namespace MyBooksLibraryApi.Data.Migrations
 {
     [DbContext(typeof(BooksDataContext))]
-    [Migration("20240517024126_initial")]
-    partial class initial
+    [Migration("20240520190948_ 3")]
+    partial class _3
     {
         /// <inheritdoc />
         protected override void BuildTargetModel(ModelBuilder modelBuilder)
@@ -24,7 +24,7 @@ namespace MyBooksLibraryApi.Data.Migrations
 
             SqlServerModelBuilderExtensions.UseIdentityColumns(modelBuilder);
 
-            modelBuilder.Entity("MyBooksLibraryApi.Data.DataBook", b =>
+            modelBuilder.Entity("MyBooksLibraryApi.Data.Book", b =>
                 {
                     b.Property<int>("Id")
                         .ValueGeneratedOnAdd()
@@ -32,7 +32,22 @@ namespace MyBooksLibraryApi.Data.Migrations
 
                     SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("Id"));
 
+                    b.Property<string>("Author")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("CoverUrl")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsFavorite")
+                        .HasColumnType("bit");
+
                     b.Property<string>("Key")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Notes")
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<string>("Title")
                         .HasColumnType("nvarchar(max)");
 
                     b.Property<int>("UserId")
@@ -67,10 +82,10 @@ namespace MyBooksLibraryApi.Data.Migrations
                     b.ToTable("Users");
                 });
 
-            modelBuilder.Entity("MyBooksLibraryApi.Data.DataBook", b =>
+            modelBuilder.Entity("MyBooksLibraryApi.Data.Book", b =>
                 {
                     b.HasOne("MyBooksLibraryApi.Data.User", "User")
-                        .WithMany("DataBooks")
+                        .WithMany("Books")
                         .HasForeignKey("UserId")
                         .OnDelete(DeleteBehavior.Restrict)
                         .IsRequired();
@@ -80,7 +95,7 @@ namespace MyBooksLibraryApi.Data.Migrations
 
             modelBuilder.Entity("MyBooksLibraryApi.Data.User", b =>
                 {
-                    b.Navigation("DataBooks");
+                    b.Navigation("Books");
                 });
 #pragma warning restore 612, 618
         }

@@ -51,16 +51,16 @@ namespace MyBooksLibraryApi.Data
             return books;
         }
 
-        public List<DataBook> GetDataBooksForUserId(int userId)
+        public List<Book> GetBooksForUserId(int userId)
         {
             using var context = new BooksDataContext(_connection);
             return context.MyBooks.Where(b => b.UserId == userId).ToList();
         }
 
-        public void AddToFavorites(DataBook dataBook)
+        public void AddToFavorites(Book book)
         {
             using var context = new BooksDataContext(_connection);
-            context.MyBooks.Add(dataBook);
+            context.MyBooks.Add(book);
             context.SaveChanges();
         }
 
@@ -71,10 +71,5 @@ namespace MyBooksLibraryApi.Data
             context.MyBooks.Remove(toRemove);
             context.SaveChanges();
         }
-
-        //public List<Book> GetFavorites(int userId)
-        //{
-        //    return GetDataBooksForUserId(userId).Select(db => new Book { });
-        //}
     }
 }

@@ -25,5 +25,5 @@ public class BooksDataContext : DbContext
     }
 
     public DbSet<User> Users { get; set; }
-    public DbSet<DataBook> MyBooks { get; set; }
+    public DbSet<Book> MyBooks { get; set; }
 }

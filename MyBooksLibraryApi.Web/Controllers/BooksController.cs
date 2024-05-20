@@ -27,7 +27,7 @@ namespace MyBooksLibraryApi.Web.Controllers
             {
                 var userRepo = new UsersRepository(_connection);
                 var user = userRepo.GetByEmail(User.Identity.Name);
-                var favorites = repo.GetDataBooksForUserId(user.Id);
+                var favorites = repo.GetBooksForUserId(user.Id);
 
                 if (favorites != null)
                 {
@@ -49,12 +49,14 @@ namespace MyBooksLibraryApi.Web.Controllers
 
         [Authorize]
         [HttpPost("addtofavorites")]
-        public void AddToFavorites(AddToFavoritesVM vm)
+        public void AddToFavorites(Book book)
         {
             var repo = new BooksRepository(_connection);
             var userRepo = new UsersRepository(_connection);
-            var dataBook = new DataBook { Key = vm.Key, UserId = userRepo.GetByEmail(User.Identity.Name).Id };
-            repo.AddToFavorites(dataBook);
+            var userId = userRepo.GetByEmail(User.Identity.Name).Id;
+            book.UserId = userId;
+            book.IsFavorite = true;
+            repo.AddToFavorites(book);
         }
 
         [Authorize]
@@ -64,6 +66,16 @@ namespace MyBooksLibraryApi.Web.Controllers
             var repo = new BooksRepository(_connection);
             var userRepo = new UsersRepository(_connection);
             repo.RemoveFromFavorites(userRepo.GetByEmail(User.Identity.Name).Id, vm.Key);
+        }
+
+        [Authorize]
+        [HttpGet("getmyfavorites")]
+        public List<Book> GetMyFavorites()
+        {
+            var repo = new BooksRepository(_connection);
+            var userRepo = new UsersRepository(_connection);
+            var userId = userRepo.GetByEmail(User.Identity.Name).Id;
+            return repo.GetBooksForUserId(userId);
         }
     }
 }

@@ -19,14 +19,15 @@ const Search = () => {
         setBooks(data)
     }
 
-    const onAddClick = async key => {
-        console.log(key)
-        await axios.post('/api/books/addtofavorites', { key })
-        toggleBookFavoriteStatus(key)
+    const onAddClick = async ({ book }) => {
+
+        console.log(book)
+        await axios.post('/api/books/addtofavorites',  book )
+        toggleBookFavoriteStatus(book.key)
     }
 
     const onRemoveClick = async key => {
-        await axios.post('/api/books/removefromfavorites', { key })
+        await axios.post('/api/books/removefromfavorites', {key})
         toggleBookFavoriteStatus(key)
     }
 
@@ -59,7 +60,7 @@ const Search = () => {
                                     <p className="card-text">By {b.author}</p>
                                     {!isLoggedIn && <button disabled className="btn btn-success mt-auto">Sign In to Add to Favorites</button>}
                                     {isLoggedIn && <button className={b.isFavorite ? 'btn btn-danger' : 'btn btn-success'} onClick=
-                                        {b.isFavorite ? () => { onRemoveClick(b.key) } : () => { onAddClick(b.key) }}>{b.isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}</button>}
+                                        {b.isFavorite ? () => { onRemoveClick(b.key) } : () => { onAddClick({ book: { key: b.key, title: b.title, author: b.author, coverUrl: b.coverUrl } }) }}>{b.isFavorite ? 'Remove from Favorites' : 'Add to Favorites'}</button>}
                                 </div>
                             </div>
                         </div>)}
