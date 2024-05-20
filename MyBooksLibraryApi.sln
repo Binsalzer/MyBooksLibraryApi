@@ -1,0 +1,28 @@
+﻿
+Microsoft Visual Studio Solution File, Format Version 12.00
+# Visual Studio Version 17
+VisualStudioVersion = 17.0.31903.59
+MinimumVisualStudioVersion = 10.0.40219.1
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBooksLibraryApi.Web", "MyBooksLibraryApi.Web\MyBooksLibraryApi.Web.csproj", "{3A164F4A-F8B1-49E8-8443-9FE3BAAE1AA2}"
+EndProject
+Project("{FAE04EC0-301F-11D3-BF4B-00C04F79EFBC}") = "MyBooksLibraryApi.Data", "MyBooksLibraryApi.Data\MyBooksLibraryApi.Data.csproj", "{C538BEA7-A21D-46AB-A06E-D79468D784DC}"
+EndProject
+Global
+	GlobalSection(SolutionConfigurationPlatforms) = preSolution
+		Debug|Any CPU = Debug|Any CPU
+		Release|Any CPU = Release|Any CPU
+	EndGlobalSection
+	GlobalSection(SolutionProperties) = preSolution
+		HideSolutionNode = FALSE
+	EndGlobalSection
+	GlobalSection(ProjectConfigurationPlatforms) = postSolution
+		{3A164F4A-F8B1-49E8-8443-9FE3BAAE1AA2}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{3A164F4A-F8B1-49E8-8443-9FE3BAAE1AA2}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{3A164F4A-F8B1-49E8-8443-9FE3BAAE1AA2}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{3A164F4A-F8B1-49E8-8443-9FE3BAAE1AA2}.Release|Any CPU.Build.0 = Release|Any CPU
+		{C538BEA7-A21D-46AB-A06E-D79468D784DC}.Debug|Any CPU.ActiveCfg = Debug|Any CPU
+		{C538BEA7-A21D-46AB-A06E-D79468D784DC}.Debug|Any CPU.Build.0 = Debug|Any CPU
+		{C538BEA7-A21D-46AB-A06E-D79468D784DC}.Release|Any CPU.ActiveCfg = Release|Any CPU
+		{C538BEA7-A21D-46AB-A06E-D79468D784DC}.Release|Any CPU.Build.0 = Release|Any CPU
+	EndGlobalSection
+EndGlobal
