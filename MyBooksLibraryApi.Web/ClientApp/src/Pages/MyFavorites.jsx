@@ -19,7 +19,7 @@ const MyFavorites = () => {
             <div className="container mt-5">
                 <h2 className="mb-4 text-primary">My Favorites</h2>
                 <div className="row">
-                    {books.map(b => <div className="col-md-4 mb-4" key={b.key}>
+                    {!!books && books.map(b => <div className="col-md-4 mb-4" key={b.key}>
                         <div className="card h-100 shadow-sm border-0">
                             <div className="position-relative">
                                 <img src={b.coverUrl} className="card-img-top" alt={b.title} style={{ height: '200px', objectFit: 'contain' }}></img>

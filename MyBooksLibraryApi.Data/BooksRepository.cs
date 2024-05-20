@@ -43,7 +43,7 @@ namespace MyBooksLibraryApi.Data
                 {
                     Key = doc.Key,
                     Title = doc.Title,
-                    Author = doc.AuthorName?.Length > 0 ? doc.AuthorName[0] : "Unknown Author",
+                    Author = doc.AuthorName?.Length > 0 ? string.Join(" ,",doc.AuthorName) : "Unknown Author",
                     CoverUrl = doc.CoverId.HasValue ? $"https://covers.openlibrary.org/b/id/{doc.CoverId}-M.jpg" : "https://via.placeholder.com/150"
                 });
             }
