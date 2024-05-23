@@ -71,5 +71,13 @@ namespace MyBooksLibraryApi.Data
             context.MyBooks.Remove(toRemove);
             context.SaveChanges();
         }
+
+        public void SaveNote(Book book)
+        {
+            using var context = new BooksDataContext(_connection);
+            var toSave = context.MyBooks.Where(b => b.UserId == book.UserId).FirstOrDefault(b => b.Key == book.Key);
+            toSave.Notes = book.Notes;
+            context.SaveChanges();
+        }
     }
 }

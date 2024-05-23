@@ -8,6 +8,7 @@ import Logout from './Pages/Logout'
 import Search from './Pages/Search'
 import MyFavorites from './Pages/MyFavorites'
 import { AuthenticationContextComponent } from './AuthenticationContext'
+import PrivateRoute from './PrivateRoute'
 
 
 const App = () => {
@@ -18,9 +19,15 @@ const App = () => {
                     <Route path='/' element={<Home />} />
                     <Route path='/signup' element={<SignUp />} />
                     <Route path='/login' element={<Login />} />
-                    <Route path='/logout' element={<Logout />} />
+                    <Route path='/logout' element={
+                        <PrivateRoute>
+                            <Logout />
+                    </PrivateRoute>} />
                     <Route path='/search' element={<Search />} />
-                    <Route path='myfavorites/' element={<MyFavorites/> }/>
+                    <Route path='myfavorites/' element={
+                        <PrivateRoute>
+                            <MyFavorites />
+                        </PrivateRoute>} />
                 </Routes>
             </Layout>
         </AuthenticationContextComponent>

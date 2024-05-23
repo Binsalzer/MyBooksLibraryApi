@@ -77,5 +77,15 @@ namespace MyBooksLibraryApi.Web.Controllers
             var userId = userRepo.GetByEmail(User.Identity.Name).Id;
             return repo.GetBooksForUserId(userId);
         }
+
+        [Authorize]
+        [HttpPost("savenote")]
+        public void SaveNote(SaveNoteVM vm)
+        {
+            var repo = new BooksRepository(_connection);
+            var userRepo = new UsersRepository(_connection);
+            var userId = userRepo.GetByEmail(User.Identity.Name).Id;
+            repo.SaveNote(new Book { UserId = userId, Key = vm.Key, Notes = vm.Notes });
+        }
     }
 }

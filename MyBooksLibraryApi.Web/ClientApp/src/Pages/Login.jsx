@@ -27,7 +27,7 @@ const Login = () => {
         setIsValidLogin(isValid);
         if (isValid) {
             setUser(data);
-            navigate('/mybookmarks');
+            navigate('/myfavorites');
         }
     }
 
